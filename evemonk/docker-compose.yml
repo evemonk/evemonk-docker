@@ -8,7 +8,7 @@ volumes:
 
 services:
   nginx:
-    image: 'nginx:1.14.2'
+    image: 'nginx:1.16.0'
     restart: unless-stopped
     volumes:
       - 'app_shared:/shared'
@@ -21,7 +21,7 @@ services:
       - 'redis_data:/data'
 
   memcached:
-    image: 'memcached:1.5.12'
+    image: 'memcached:1.5.14'
     restart: unless-stopped
     command: memcached -m 64
 
@@ -32,7 +32,7 @@ services:
       - 'postresql_data:/var/lib/postgresql/data'
 
   elasticsearch:
-    image: 'elasticsearch:7.0.0'
+    image: 'elasticsearch:7.0.1'
     restart: unless-stopped
     volumes:
       - 'elasticsearch_data:/usr/share/elasticsearch/data'
@@ -44,7 +44,6 @@ services:
     entrypoint: ./bin/app.sh
     volumes:
       - 'app_shared:/shared'
-
     depends_on:
       - redis
       - memcached
