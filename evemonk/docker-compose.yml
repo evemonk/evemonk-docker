@@ -12,6 +12,7 @@ services:
     restart: unless-stopped
     volumes:
       - 'app_shared:/shared'
+      - './nginx.conf:/etc/nginx/nginx.conf:ro'
 
   redis:
     image: 'redis:5.0.4'
