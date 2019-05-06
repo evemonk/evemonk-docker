@@ -3,8 +3,7 @@ version: '3.7'
 volumes:
   postresql_data:
   redis_data:
-  app_assets:
-  app_packs:
+  app_shared:
   elasticsearch_data:
 
 services:
@@ -12,8 +11,7 @@ services:
     image: 'nginx:1.14.2'
     restart: unless-stopped
     volumes:
-      - 'app_assets:/shared/public/assets'
-      - 'app_packs:/shared/public/packs'
+      - 'app_shared:/shared'
 
   redis:
     image: 'redis:5.0.4'
@@ -44,8 +42,8 @@ services:
     restart: unless-stopped
     entrypoint: ./bin/app.sh
     volumes:
-      - 'app_assets:/shared/public/assets'
-      - 'app_packs:/shared/public/packs'
+      - 'app_shared:/shared'
+
     depends_on:
       - redis
       - memcached
