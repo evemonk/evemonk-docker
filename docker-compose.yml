@@ -12,8 +12,8 @@ services:
     image: 'nginx:1.14.2'
     restart: unless-stopped
     volumes:
-      - 'app_assets:/app/public/assets'
-      - 'app_packs:/app/public/packs'
+      - 'app_assets:/shared/public/assets'
+      - 'app_packs:/shared/public/packs'
 
   redis:
     image: 'redis:5.0.4'
@@ -44,8 +44,8 @@ services:
     restart: unless-stopped
     entrypoint: ./bin/app.sh
     volumes:
-      - 'app_assets:/app/public/assets'
-      - 'app_packs:/app/public/packs'
+      - 'app_assets:/shared/public/assets'
+      - 'app_packs:/shared/public/packs'
     depends_on:
       - redis
       - memcached
@@ -59,9 +59,6 @@ services:
     env_file: .env
     restart: unless-stopped
     entrypoint: ./bin/sidekiq.sh
-    volumes:
-      - 'app_assets:/app/public/assets'
-      - 'app_packs:/app/public/packs'
     depends_on:
       - redis
       - memcached
