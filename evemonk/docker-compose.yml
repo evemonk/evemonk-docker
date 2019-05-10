@@ -12,7 +12,11 @@ services:
     restart: unless-stopped
     volumes:
       - 'app_shared:/shared'
-      - './nginx.conf:/etc/nginx/nginx.conf:ro'
+#      - './nginx.conf:/etc/nginx/nginx.conf1'
+      - './nginx-evemonk.conf:/etc/nginx/conf.d/default.conf:ro'
+    ports:
+      - '80:80'
+      - '443:443'
 
   redis:
     image: 'redis:5.0.4'
