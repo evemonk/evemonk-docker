@@ -26,29 +26,30 @@ services:
     command: memcached -m 64
 
   postgresql:
-    image: 'postgres:11.2'
+    image: 'postgres:11.3'
     restart: unless-stopped
     volumes:
       - 'postresql_data:/var/lib/postgresql/data'
 
-  elasticsearch:
-    image: 'elasticsearch:7.0.1'
-    restart: unless-stopped
-    volumes:
-      - 'elasticsearch_data:/usr/share/elasticsearch/data'
+#  elasticsearch:
+#    image: 'elasticsearch:7.0.1'
+#    restart: unless-stopped
+#    volumes:
+#      - 'elasticsearch_data:/usr/share/elasticsearch/data'
 
   backend:
-    image: 'biow0lf/evemonk:latest'
+    # image: 'biow0lf/evemonk:latest'
+    image: 'biow0lf/evemonk:master'
     env_file: .env
     restart: unless-stopped
-    entrypoint: ./bin/app.sh
+    command: /app/bin/backend.sh
     volumes:
       - 'app_shared:/shared'
     depends_on:
       - redis
       - memcached
       - postgresql
-      - elasticsearch
+#      - elasticsearch
     ports:
       - '3000:3000'
 
@@ -56,9 +57,9 @@ services:
     image: 'biow0lf/evemonk:latest'
     env_file: .env
     restart: unless-stopped
-    entrypoint: ./bin/sidekiq.sh
+    command: /app/bin/sidekiq.sh
     depends_on:
       - redis
       - memcached
       - postgresql
-      - elasticsearch
+#      - elasticsearch

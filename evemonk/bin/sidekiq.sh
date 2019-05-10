@@ -1,6 +1,6 @@
 #! /bin/sh
 
-wait-for-it "elasticsearch:9200" -- echo "Elastic up and running"
+# wait-for-it "elasticsearch:9200" -- echo "Elastic up and running"
 
 wait-for-it "redis:6379" -- echo "Redis up and running"
 
