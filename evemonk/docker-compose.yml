@@ -42,7 +42,7 @@ services:
     image: 'biow0lf/evemonk:master'
     env_file: .env
     restart: unless-stopped
-    command: /app/bin/backend.sh
+    command: ./bin/backend.sh
     volumes:
       - 'app_shared:/shared'
     depends_on:
@@ -54,10 +54,11 @@ services:
       - '3000:3000'
 
   sidekiq:
-    image: 'biow0lf/evemonk:latest'
+#    image: 'biow0lf/evemonk:latest'
+    image: 'biow0lf/evemonk:master'
     env_file: .env
     restart: unless-stopped
-    command: /app/bin/sidekiq.sh
+    command: ./bin/sidekiq.sh
     depends_on:
       - redis
       - memcached
