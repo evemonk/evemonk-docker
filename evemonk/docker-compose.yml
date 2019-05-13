@@ -9,6 +9,7 @@ volumes:
 services:
   nginx:
     image: 'nginx:1.16.0'
+    container_name: evemonk_nginx
     restart: unless-stopped
     volumes:
       - 'app_shared:/shared'
@@ -19,29 +20,37 @@ services:
 
   redis:
     image: 'redis:5.0.4'
+    container_name: evemonk_redis
     restart: unless-stopped
     volumes:
       - 'redis_data:/data'
 
   memcached:
     image: 'memcached:1.5.14'
+    container_name: evemonk_memcached
     restart: unless-stopped
     command: memcached -m 64
 
   postgresql:
     image: 'postgres:11.3'
+    container_name: evemonk_postgresql
     restart: unless-stopped
     volumes:
       - 'postresql_data:/var/lib/postgresql/data'
 
-#  elasticsearch:
-#    image: 'elasticsearch:7.0.1'
-#    restart: unless-stopped
-#    volumes:
-#      - 'elasticsearch_data:/usr/share/elasticsearch/data'
+  elasticsearch:
+    image: 'elasticsearch:7.0.1'
+    container_name: evemonk_elasticsearch
+    restart: unless-stopped
+    volumes:
+      - 'elasticsearch_data:/usr/share/elasticsearch/data'
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
 
   backend:
-    image: 'biow0lf/evemonk:latest'
+    image: 'biow0lf/evemonk:master'
+    container_name: evemonk_backend
     env_file: .env
     restart: unless-stopped
     command: ./bin/backend.sh
@@ -51,12 +60,13 @@ services:
       - redis
       - memcached
       - postgresql
-#      - elasticsearch
+      - elasticsearch
     ports:
       - '3000:3000'
 
   sidekiq:
-    image: 'biow0lf/evemonk:latest'
+    image: 'biow0lf/evemonk:master'
+    container_name: evemonk_sidekiq
     env_file: .env
     restart: unless-stopped
     command: ./bin/sidekiq.sh
@@ -64,4 +74,4 @@ services:
       - redis
       - memcached
       - postgresql
-#      - elasticsearch
+      - elasticsearch
