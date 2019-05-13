@@ -49,13 +49,14 @@ services:
       - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
 
   backend:
-    image: 'biow0lf/evemonk:master'
+    image: 'biow0lf/evemonk:latest'
     container_name: evemonk_backend
     env_file: .env
     restart: unless-stopped
     command: ./bin/backend.sh
     volumes:
       - 'app_shared:/shared'
+      - './newrelic.yml:/app/config/newrelic.yml:ro'
     depends_on:
       - redis
       - memcached
@@ -65,11 +66,13 @@ services:
       - '3000:3000'
 
   sidekiq:
-    image: 'biow0lf/evemonk:master'
+    image: 'biow0lf/evemonk:latest'
     container_name: evemonk_sidekiq
     env_file: .env
     restart: unless-stopped
     command: ./bin/sidekiq.sh
+    volumes:
+      - './newrelic.yml:/app/config/newrelic.yml:ro'
     depends_on:
       - redis
       - memcached
