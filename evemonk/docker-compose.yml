@@ -19,7 +19,7 @@ services:
       - '443:443'
 
   redis:
-    image: 'redis:5.0.4'
+    image: 'redis:5.0.5'
     container_name: evemonk_redis
     restart: unless-stopped
     volumes:
