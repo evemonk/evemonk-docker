@@ -28,7 +28,6 @@ services:
     volumes:
       - 'https_portal:/var/lib/https-portal'
     environment:
-      STAGE: local
       DOMAINS: 'evemonk.com -> http://nginx'
     depends_on:
       - nginx
