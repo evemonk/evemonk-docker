@@ -28,6 +28,7 @@ services:
     volumes:
       - 'https_portal:/var/lib/https-portal'
     environment:
+      STAGE: local
       DOMAINS: 'evemonk.com -> http://nginx'
     depends_on:
       - nginx
@@ -40,7 +41,7 @@ services:
       - 'redis_data:/data'
 
   memcached:
-    image: 'memcached:1.5.14'
+    image: 'memcached:1.5.15'
     container_name: evemonk_memcached
     restart: unless-stopped
     command: memcached -m 64
