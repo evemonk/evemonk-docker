@@ -29,7 +29,8 @@ services:
       - 'https_portal:/var/lib/https-portal'
     environment:
       STAGE: 'production'
-      DOMAINS: 'evemonk.com -> http://nginx'
+      DOMAINS: 'evemonk.com -> http://nginx,
+                www.evemonk.com => https://evemonk.com'
 
   redis:
     image: 'redis:5.0.5'
