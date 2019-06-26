@@ -19,7 +19,7 @@ services:
       - backend
 
   https_portal:
-    image: steveltn/https-portal:1.7.1
+    image: 'steveltn/https-portal:1.7.1'
     container_name: evemonk_https_portal
     restart: unless-stopped
     ports:
@@ -53,7 +53,7 @@ services:
       - 'postresql_data:/var/lib/postgresql/data'
 
   elasticsearch:
-    image: 'elasticsearch:7.1.1'
+    image: 'elasticsearch:7.2.0'
     container_name: evemonk_elasticsearch
     restart: unless-stopped
     volumes:
