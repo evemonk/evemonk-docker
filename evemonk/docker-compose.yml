@@ -86,6 +86,7 @@ services:
     env_file: .env
     command: ./bin/sidekiq.sh
     volumes:
+      - 'app_shared:/shared'
       - './newrelic.yml:/app/config/newrelic.yml:ro'
     depends_on:
       - redis
