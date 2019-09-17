@@ -19,7 +19,7 @@ services:
       - backend
 
   https_portal:
-    image: 'steveltn/https-portal:1.7.2'
+    image: 'steveltn/https-portal:1.7.3'
     container_name: evemonk_https_portal
     restart: unless-stopped
     ports:
