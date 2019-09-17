@@ -28,6 +28,7 @@ services:
     environment:
       STAGE: 'production'
       DOMAINS: 'evemonk.com -> http://nginx,
+                api.evemonk.com -> http://nginx,
                 www.evemonk.com => https://evemonk.com'
 
   redis:
