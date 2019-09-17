@@ -15,8 +15,6 @@ services:
     volumes:
       - 'app_shared:/shared'
       - './nginx-evemonk.conf:/etc/nginx/conf.d/default.conf:ro'
-    depends_on:
-      - backend
 
   https_portal:
     image: 'steveltn/https-portal:1.7.3'
