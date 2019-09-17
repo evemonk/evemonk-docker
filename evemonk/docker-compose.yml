@@ -53,7 +53,7 @@ services:
       - 'postresql_data:/var/lib/postgresql/data'
 
   elasticsearch:
-    image: 'elasticsearch:7.3.0'
+    image: 'elasticsearch:7.3.2'
     container_name: evemonk_elasticsearch
     restart: unless-stopped
     volumes:
