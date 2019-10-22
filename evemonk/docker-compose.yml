@@ -49,14 +49,14 @@ services:
     container_name: "evemonk_postgresql"
     restart: "unless-stopped"
     volumes:
-      - 'postresql_data:/var/lib/postgresql/data'
+      - "postresql_data:/var/lib/postgresql/data"
 
   elasticsearch:
-    image: 'elasticsearch:7.3.2'
-    container_name: evemonk_elasticsearch
-    restart: unless-stopped
+    image: "elasticsearch:7.3.2"
+    container_name: "evemonk_elasticsearch"
+    restart: "unless-stopped"
     volumes:
-      - 'elasticsearch_data:/usr/share/elasticsearch/data'
+      - "elasticsearch_data:/usr/share/elasticsearch/data"
     environment:
       - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
