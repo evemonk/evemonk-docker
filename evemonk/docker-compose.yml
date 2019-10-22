@@ -39,7 +39,7 @@ services:
       - "redis_data:/data"
 
   memcached:
-    image: "memcached:1.5.17"
+    image: "memcached:1.5.19"
     container_name: "evemonk_memcached"
     restart: "unless-stopped"
     command: memcached -m 64
