@@ -52,7 +52,7 @@ services:
       - "postresql_data:/var/lib/postgresql/data"
 
   elasticsearch:
-    image: "docker.elastic.co/elasticsearch/elasticsearch:7.4.1"
+    image: "docker.elastic.co/elasticsearch/elasticsearch:7.4.2"
     container_name: "evemonk_elasticsearch"
     restart: "unless-stopped"
     volumes:
