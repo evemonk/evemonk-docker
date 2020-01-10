@@ -65,8 +65,8 @@ services:
     image: "biow0lf/evemonk:latest"
     container_name: "evemonk_backend"
     restart: "unless-stopped"
-    env_file: .env
-    command: ./bin/backend.sh
+    env_file: ".env"
+    command: "./bin/backend.sh"
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
@@ -82,8 +82,23 @@ services:
     image: "biow0lf/evemonk:latest"
     container_name: "evemonk_sidekiq"
     restart: "unless-stopped"
-    env_file: .env
-    command: ./bin/sidekiq.sh
+    env_file: ".env"
+    command: "./bin/sidekiq.sh"
+    volumes:
+      - "app_shared:/shared"
+      - "./newrelic.yml:/app/config/newrelic.yml:ro"
+    depends_on:
+      - "redis"
+      - "memcached"
+      - "postgresql"
+      - "elasticsearch"
+
+  cron:
+    image: "biow0lf/evemonk:latest"
+    container_name: "evemonk_cron"
+    restart: "unless-stopped"
+    env_file: ".env"
+    command: "./bin/cron.sh"
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
