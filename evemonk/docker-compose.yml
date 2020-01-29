@@ -70,6 +70,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
+      - "/srv/static/SDE-20200121-TRANQUILITY:/app/static:ro"
     depends_on:
       - "redis"
       - "memcached"
@@ -87,6 +88,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
+      - "/srv/static/SDE-20200121-TRANQUILITY:/app/static:ro"
     depends_on:
       - "redis"
       - "memcached"
@@ -102,6 +104,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
+      - "/srv/static/SDE-20200121-TRANQUILITY:/app/static:ro"
     depends_on:
       - "redis"
       - "memcached"
