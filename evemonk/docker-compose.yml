@@ -33,7 +33,7 @@ services:
                 www.evemonk.com => https://evemonk.com"
 
   redis:
-    image: "redis:5.0.9"
+    image: "redis:6.0.0"
     container_name: "evemonk_redis"
     restart: "unless-stopped"
     volumes:
