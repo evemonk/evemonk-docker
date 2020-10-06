@@ -72,11 +72,6 @@ services:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20200818:/app/static:ro"
-    depends_on:
-      - "redis"
-      - "memcached"
-      - "postgresql"
-      - "elasticsearch"
     ports:
       - "3000:3000"
 
@@ -90,11 +85,6 @@ services:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20200818:/app/static:ro"
-    depends_on:
-      - "redis"
-      - "memcached"
-      - "postgresql"
-      - "elasticsearch"
 
   cron:
     image: "docker.io/biow0lf/evemonk:0.3.12"
@@ -106,8 +96,3 @@ services:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
       - "/srv/static/sde-20200818:/app/static:ro"
-    depends_on:
-      - "redis"
-      - "memcached"
-      - "postgresql"
-      - "elasticsearch"
