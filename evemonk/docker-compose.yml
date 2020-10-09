@@ -46,9 +46,11 @@ services:
     command: "memcached -m 64"
 
   postgresql:
-    image: "docker.io/library/postgres:12.4"
+    image: "docker.io/library/postgres:13.0"
     container_name: "evemonk_postgresql"
     restart: "unless-stopped"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
     volumes:
       - "postresql_data:/var/lib/postgresql/data"
 
