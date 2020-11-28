@@ -17,7 +17,7 @@ services:
       - "./nginx-evemonk.conf:/etc/nginx/conf.d/default.conf:ro"
 
   https_portal:
-    image: "docker.io/steveltn/https-portal:1.13.0"
+    image: "docker.io/steveltn/https-portal:1.14.0"
     container_name: "evemonk_https_portal"
     restart: "unless-stopped"
     ports:
