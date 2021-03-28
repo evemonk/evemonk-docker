@@ -73,7 +73,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
-      - "/srv/static/sde-20210225:/app/static:ro"
+      - "/srv/static/sde-20210324:/app/static:ro"
     ports:
       - "3000:3000"
 
@@ -86,7 +86,7 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
-      - "/srv/static/sde-20210225:/app/static:ro"
+      - "/srv/static/sde-20210324:/app/static:ro"
 
   cron:
     image: "docker.io/biow0lf/evemonk:0.4.20"
@@ -97,4 +97,4 @@ services:
     volumes:
       - "app_shared:/shared"
       - "./newrelic.yml:/app/config/newrelic.yml:ro"
-      - "/srv/static/sde-20210225:/app/static:ro"
+      - "/srv/static/sde-20210324:/app/static:ro"
