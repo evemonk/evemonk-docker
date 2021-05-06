@@ -9,7 +9,7 @@ volumes:
 
 services:
   nginx:
-    image: "docker.io/library/nginx:1.18.0"
+    image: "docker.io/library/nginx:1.20.0"
     container_name: "evemonk_nginx"
     restart: "unless-stopped"
     volumes:
