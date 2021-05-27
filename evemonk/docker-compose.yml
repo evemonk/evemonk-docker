@@ -6,6 +6,7 @@ volumes:
   app_shared: {}
   elasticsearch_data: {}
   https_portal: {}
+  https_logs: {}
 
 services:
   nginx:
@@ -25,6 +26,7 @@ services:
       - "443:443"
     volumes:
       - "https_portal:/var/lib/https-portal"
+      - "https_logs:/var/log/nginx"
     environment:
       STAGE: "production"
       WEBSOCKET: "true"
