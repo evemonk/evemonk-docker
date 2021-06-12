@@ -68,7 +68,7 @@ services:
       - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
 
   backend:
-    image: "docker.io/biow0lf/evemonk:0.4.26"
+    image: "docker.io/biow0lf/evemonk:0.4.27"
     container_name: "evemonk_backend"
     restart: "unless-stopped"
     env_file: ".env"
@@ -81,7 +81,7 @@ services:
       - "3000:3000"
 
   sidekiq:
-    image: "docker.io/biow0lf/evemonk:0.4.26"
+    image: "docker.io/biow0lf/evemonk:0.4.27"
     container_name: "evemonk_sidekiq"
     restart: "unless-stopped"
     env_file: ".env"
@@ -92,7 +92,7 @@ services:
       - "/srv/static/sde-20210527:/app/static:ro"
 
   cron:
-    image: "docker.io/biow0lf/evemonk:0.4.26"
+    image: "docker.io/biow0lf/evemonk:0.4.27"
     container_name: "evemonk_cron"
     restart: "unless-stopped"
     env_file: ".env"
