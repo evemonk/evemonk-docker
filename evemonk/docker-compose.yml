@@ -4,7 +4,6 @@ volumes:
   postresql_data: {}
   redis_data: {}
   app_shared: {}
-  elasticsearch_data: {}
   https_portal: {}
   https_logs: {}
 
@@ -56,16 +55,6 @@ services:
       POSTGRES_HOST_AUTH_METHOD: "trust"
     volumes:
       - "postresql_data:/var/lib/postgresql/data"
-
-  elasticsearch:
-    image: "docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2"
-    container_name: "evemonk_elasticsearch"
-    restart: "unless-stopped"
-    volumes:
-      - "elasticsearch_data:/usr/share/elasticsearch/data"
-    environment:
-      - "discovery.type=single-node"
-      - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
 
   backend:
     image: "docker.io/biow0lf/evemonk:0.4.33"
