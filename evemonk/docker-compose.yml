@@ -57,7 +57,7 @@ services:
       - "postresql_data:/var/lib/postgresql/data"
 
   backend:
-    image: "docker.io/biow0lf/evemonk:v0.4.34"
+    image: "docker.io/biow0lf/evemonk:v0.5.1"
     container_name: "evemonk_backend"
     restart: "unless-stopped"
     env_file: ".env"
@@ -70,7 +70,7 @@ services:
       - "3000:3000"
 
   sidekiq:
-    image: "docker.io/biow0lf/evemonk:v0.4.34"
+    image: "docker.io/biow0lf/evemonk:v0.5.1"
     container_name: "evemonk_sidekiq"
     restart: "unless-stopped"
     env_file: ".env"
@@ -81,7 +81,7 @@ services:
       - "/srv/static/sde-20210612:/app/static:ro"
 
   cron:
-    image: "docker.io/biow0lf/evemonk:v0.4.34"
+    image: "docker.io/biow0lf/evemonk:v0.5.1"
     container_name: "evemonk_cron"
     restart: "unless-stopped"
     env_file: ".env"
